@@ -1,3 +1,6 @@
+/**
+ * Data model for a top artist result
+ */
 export interface Artist {
     personalRank?: number;
     artistName: string;
@@ -6,6 +9,9 @@ export interface Artist {
     listenURL?: string;
 }
 
+/**
+ * Data mmodel for a top track result
+ */
 export interface Track {
     personalRank?: number;
     artistName: string;
