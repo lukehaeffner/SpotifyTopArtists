@@ -4,6 +4,7 @@ import axios from 'axios'
 import { NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from './../environments/environment';
+import { QueryType } from "./spotify-query-types";
 
 
 @Component({
@@ -17,8 +18,7 @@ export class AppComponent implements OnInit{
   arrayArtists:any[] = [];
   arrayAlbums:any[] = [];
   clientID = environment.CLIENT_ID
-  scope = "user-top-read"
-  redirect = `https://accounts.spotify.com/authorize?client_id=${this.clientID}&redirect_uri=http:%2F%2Flocalhost:4200%2F&scope=${this.scope}&response_type=token`
+  redirect = `https://accounts.spotify.com/authorize?client_id=${this.clientID}&redirect_uri=http:%2F%2Flocalhost:4200%2F&scope=${SpotifyEndpoints.SCOPE}&response_type=token`
   config = {
     headers: {
       'Authorization': ""
@@ -28,8 +28,8 @@ export class AppComponent implements OnInit{
   constructor(private route: ActivatedRoute) {
     this.route.fragment.subscribe(fragment => {
         this.generateAuthorization(fragment)
-        this.buildData(SpotifyEndpoints.TYPES.ARTIST)
-        this.buildData(SpotifyEndpoints.TYPES.TRACKS)
+        this.buildData(QueryType.ARTIST)
+        this.buildData(QueryType.TRACKS)
     })
   }
 
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit{
    * Build the arrays for top artists and tracks
    * @param type The SpotifyEndpoint.TYPES of either TRACK or ARTIST
    */
-  private buildData(type: string) {
+  private buildData(type: QueryType) {
     var url = this.buildURL(type)
     var allResult = []
     axios.get(url, this.config).then((resp) => {
@@ -91,9 +91,9 @@ export class AppComponent implements OnInit{
   }
   /**
    * Build either the Top Artists or Top Tracks URL
-   * @param type The SpotifyEndpoints.TYPES type of reques tbeing made
+   * @param type The QueryType.TYPES type of reques tbeing made
    */
-  private buildURL(type: string):string {
+  private buildURL(type: QueryType):string {
     var url:string;
     url = SpotifyEndpoints.BASE_URL;
     switch(type) {
