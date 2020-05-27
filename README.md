@@ -22,6 +22,7 @@ And then navigate to [http://localhost:4200](http://localhost:4200/)
 
 ## TODO
 1. Allow the user to choose how many results to display (API limit I believe is 50. Currently defaulting to 20)
-2. Add in appropriate error handling
-3. Make the "LISTEN" button link to the Track / Artist. Currently does nothing
-4. Make the cards look nicer
+2. Split "Albums" and "Artists" off into their own individual components
+3. Add in appropriate error handling
+4. Make the "LISTEN" button link to the Track / Artist. Currently does nothing
+5. Make the cards look nicer

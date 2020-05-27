@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { SpotifyEndpoints } from "./spotify-endpoints"
-import axios from 'axios'
 import { NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from './../environments/environment';
 import { QueryType } from "./spotify-query-types";
-
+import axios from 'axios'
 
 @Component({
   selector: 'app-root',
@@ -13,12 +12,11 @@ import { QueryType } from "./spotify-query-types";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  active: 1;
-  typeSelected:string = "Artists";
+  active: 1; // This is to make sure that "Artists" is displaying first 
+  typeSelected:string = "Artists"; // For displaying the title
   arrayArtists:any[] = [];
   arrayAlbums:any[] = [];
-  clientID = environment.CLIENT_ID
-  redirect = `https://accounts.spotify.com/authorize?client_id=${this.clientID}&redirect_uri=http:%2F%2Flocalhost:4200%2F&scope=${SpotifyEndpoints.SCOPE}&response_type=token`
+  redirect = `https://accounts.spotify.com/authorize?client_id=${environment.CLIENT_ID}&redirect_uri=http:%2F%2Flocalhost:4200%2F&scope=${SpotifyEndpoints.SCOPE}&response_type=token`
   config = {
     headers: {
       'Authorization': ""
@@ -74,33 +72,32 @@ export class AppComponent implements OnInit{
       let result = resp.data
       result.items.forEach(item => {
         allResult.push(item)
-        // this.arrayArtists.push(item)
       });
+      // Update the appropriate array, based on what type of data we're buulding
       switch(type) {
-        case SpotifyEndpoints.TYPES.ARTIST: 
+        case QueryType.ARTIST:
           this.arrayArtists = [...allResult]
           break;
-        case SpotifyEndpoints.TYPES.TRACKS:
+        case QueryType.TRACKS:
           this.arrayAlbums = [...allResult] 
           break;
       }
     }).catch((err) => {
       console.log(err)
     })
-
   }
+
   /**
    * Build either the Top Artists or Top Tracks URL
    * @param type The QueryType.TYPES type of reques tbeing made
    */
   private buildURL(type: QueryType):string {
-    var url:string;
-    url = SpotifyEndpoints.BASE_URL;
+    var url = SpotifyEndpoints.BASE_URL;
     switch(type) {
-      case SpotifyEndpoints.TYPES.ARTIST:
+      case QueryType.ARTIST:
         url +=  SpotifyEndpoints.PERSONALIZATION.TOP_TRACKS(SpotifyEndpoints.TYPES.ARTIST);
         break;
-      case SpotifyEndpoints.TYPES.TRACKS:
+      case QueryType.TRACKS:
         url +=  SpotifyEndpoints.PERSONALIZATION.TOP_TRACKS(SpotifyEndpoints.TYPES.TRACKS);
         break;
     }
@@ -108,6 +105,5 @@ export class AppComponent implements OnInit{
     return url
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
