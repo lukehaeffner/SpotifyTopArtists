@@ -1,0 +1,50 @@
+.content {
+    padding: 100px 100px 100px 100px;
+}
+.selector {
+    justify-content: center;
+}
+.header {
+    padding: 20px 20px 20px 20px;
+    background-color: #F7F7F7;
+    margin-bottom: 100px;
+    box-shadow: 10px 10px 8px #222222!important;
+}
+
+.btn-main {
+    background-color:  #F2C9E7 !important;
+    border:none!important;
+}
+
+
+.active {
+    background-color: #A192E8!important;
+}
+
+.artist-card {
+    background-color: #F7F7F7!important;
+    box-shadow: 10px 10px 8px #222222!important;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.artist-img {
+    min-width: 400px;
+    max-width:400px;
+    min-height: 400px;
+    max-height: 400px;
+}
+
+mat-card-header {
+    justify-content: center!important;
+}
+
+.mat-card-title, .mat-card-subtitle{
+    text-align: center !important;
+}
+
+mat-card-subtitle {
+    max-height: 1.5em!important;
+    overflow: hidden !important;
+    word-wrap: break-word!important;
+}

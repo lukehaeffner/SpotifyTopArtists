@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body { height: 100%;
+    overflow: auto;
+    min-height: 100%!important;
+    background-image: url("./assets/bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
