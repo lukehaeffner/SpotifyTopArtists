@@ -12,7 +12,7 @@ import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

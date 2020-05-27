@@ -4,6 +4,7 @@ import { NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from './../environments/environment';
 import { QueryType } from "./spotify-query-types";
+import { Artist, Track } from "./listing"
 import axios from 'axios'
 
 @Component({
@@ -76,10 +77,24 @@ export class AppComponent implements OnInit{
       // Update the appropriate array, based on what type of data we're buulding
       switch(type) {
         case QueryType.ARTIST:
-          this.arrayArtists = [...allResult]
+          allResult.forEach((artist) => {
+            var entry:Artist = {
+              artistName: artist.name,
+              followers: artist.followers.total,
+              imgURL: artist.images[1].url
+            }
+            this.arrayArtists.push(entry)});
           break;
         case QueryType.TRACKS:
-          this.arrayAlbums = [...allResult] 
+          allResult.forEach((track) => {
+            var entry:Track = {
+                artistName: track.artists[0].name,
+                albumName: track.album.name,
+                topTrackName: track.name,
+                imgURL: track.album.images[0].url
+            }
+            this.arrayAlbums.push(entry);
+          })
           break;
       }
     }).catch((err) => {

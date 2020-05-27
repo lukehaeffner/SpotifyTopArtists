@@ -14,11 +14,11 @@
                     <div class="col">
                     <mat-card class="artist-card shadow p-3 mb-5 bg-white rounded">
                       <mat-card-header>
-                        <mat-card-title > {{item.name}}</mat-card-title>
+                        <mat-card-title > {{item.artistName}}</mat-card-title>
                       </mat-card-header>
-                      <img class="artist-img" mat-card-image src={{item.images[1].url}}/>
+                      <img class="artist-img" mat-card-image src={{item.imgURL}}/>
                       <mat-card-content>
-                        <p> <b>Followers:</b> {{item.followers.total | number}} </p>
+                        <p> <b>Followers:</b> {{item.followers | number}} </p>
                       </mat-card-content>
                       <mat-card-actions>
                         <button mat-button>LISTEN</button>
@@ -38,13 +38,13 @@
                     <div class="col">
                     <mat-card class="artist-card shadow p-3 mb-5 bg-white rounded">
                       <mat-card-header>
-                        <mat-card-title >{{item.artists[0].name}}</mat-card-title>
-                        <mat-card-subtitle style="font-style: italic;">{{item.album.name}} </mat-card-subtitle>
+                        <mat-card-title >{{item.artistName}}</mat-card-title>
+                        <mat-card-subtitle style="font-style: italic;">{{item.albumName}} </mat-card-subtitle>
                       </mat-card-header>
-                      <img class="artist-img" mat-card-image src={{item.album.images[1].url}}/>
+                      <img class="artist-img" mat-card-image src={{item.imgURL}}/>
                       <mat-card-content>
                         <p>
-                          <b >Top Track:</b> {{item.name}}
+                          <b >Top Track:</b> {{item.topTrackName}}
                         </p>
                       </mat-card-content>
                       <mat-card-actions >
