@@ -18,8 +18,7 @@ ng serve
 
 And then navigate to [http://localhost:4200](http://localhost:4200/)
 
-[](img/artists.png)
-[](img/tracks.png)
+![](img/artists.png)
 
 ## TODO
 1. Allow the user to choose how many results to display (API limit I believe is 50. Currently defaulting to 20)
